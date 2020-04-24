@@ -1,44 +1,27 @@
-// https://eslint.org/docs/user-guide/configuring
 module.exports = {
-  root: true, parserOptions: {
+  root: true,
+  env: {
+      node: true
+  },
+  extends: [
+      'plugin:vue/essential'
+      // '@vue/standard'
+  ],
+  parserOptions: {
       parser: 'babel-eslint'
-  }, env: { browser: true, },
-  // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
-  // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.  
-  extends: ['plugin:vue/essential', 'airbnb-base'],
-  // required to lint *.vue files  
-  plugins: ['vue'],
-  // check if imports actually resolve  
-  settings: { 'import/resolver': { webpack: { config: 'build/webpack.base.conf.js' } } },  // add your custom rules here
-  rules: {    // don't require .vue extension when importing    
-      'import/extensions': ['error', 'always', { js: 'never', vue: 'never' }],
-      'linebreak-style': [0, 'error', 'windows'],
-      'indent': ["off", 2],
-      'semi': ['off', 'always'],
-      "quotes": ['off', "always"],
-      'comma-dangle': ['off', 'always'],
-      "max-len": ['off', 'always'],
-      'no-trailing-spaces': ['off', 'always'],
-      'no-param-reassign': ['off', 'always'],
-      'import/prefer-default-export': 0,
-      'arrow-parens': 0,
-      'no-console': 0,
-      'no-use-before-define': 0,
-      'no-param-reassign': 0,
-      // disallow reassignment of function parameters
-      // disallow parameter object manipulation except for specific exclusions
-      // 'no-param-reassign': ['error', {
-      //   props: true,
-      //   ignorePropertyModificationsFor: [
-      //     'state', // for vuex state
-      //     'acc',
-      // for reduce accumulators
-      //     'e'
-      // for e.returnvalue
-      //   ]    // }],
-      // allow optionalDependencies
-      'import/no-extraneous-dependencies': ['error', { optionalDependencies: ['test/unit/index.js'] }],
-      // allow debugger during development 
-      'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+  },
+  rules: {
+      'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+      'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+      'space-before-function-paren': 0,
+      'eqeqeq': 2,
+      'vue/valid-template-root': 2,
+      'spaced-comment': 2,
+      'quotes': 0,
+      'eol-last': 0,
+      'key-spacing': 0,
+      'vue/valid-v-for':1,
+      'vue/no-unused-vars':1,
+      'vue/no-parsing-error':2
   }
 }
